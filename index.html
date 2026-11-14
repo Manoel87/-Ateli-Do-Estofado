@@ -1,1 +1,535 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ateliê do Estofado | Fabricação, restauração e reforma de estofados</title>
+  <meta name="description" content="Ateliê do Estofado: fabricação sob medida, restauração e reforma de sofás e poltronas com tecidos premium. Solicite um orçamento pelo WhatsApp.">
+  <meta name="theme-color" content="#183324">
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="64x64" href="data:image/png;base64,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">
+  <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAA9c0lEQVR42u19d5xdVbX/Wnvvc87t905LJpNASCEhoYOAdKQJKIjSBRQVlSoKKNhBbAjv8awP5SkK+LD8lCcIVhCkSgsQCIT0num3n7b3Wr8/zrl3JghImSDhcxb5zEzClDvnfM+q3/Xd2Lv7bEgssRczkVyCxBJwJJaAI7EEHIkl4EgsAUdiCTgSS8CRWAKOxBJwJJaAI7HEEnAkloAjsQQciSXgSCwBR2IJOBJLwJFYAo7EEnAkloAjscQScCSWgCOxBByJJeBILAFHYgk4EkvAkVgCjsQScCSWgCOxxBJwJJaAI7EEHIkl4EgsAUdiCTgSS8CRWAKOxBJwJJaAI7EEHIklloAjsQQciSXgSCwBR2IJOBJ7c5l6K/0yiNj+mJmTu5uAYwwZxhhtDCJKKaSQmwkfQojxKNyijYhe5iqptww0jDGO4/zsa98yLM76/MVhGGyOW4iIlVo1CAJAgYgCReuHRJf4ZX4iA2Dr7SbfsvW1b7AxAOQyWaXUS+HjLQIOJeRQtXzFx88+4sDdANUZx5109XXf7+7o1MZMLDL8wL/gQ2ftMn9HbVztVz2/GRgB6Chlx8+iCRABhTWGFSZiI4RqwYIBGBgYDBufOHp2BQAyAwBHXwOIAMzM0b8gWsQhAAIIRAQU2MKZkApBEGlAQAREiaAAiChkNohSRC8GsfWCBCISs9b6x7+8adW6tY5tvyg+3grgkEJW69W9d3v7ee8/tVkeksL65Bmn3n73navWrEo5Dk1ocEHEVevW9E6a3FnMbDdz5pytJhcndwFY4LuACAhAGhgABSCOoYEZ4lsjgA2wBiBgBASQFlgWAAJIANlyJBRjCMSm/qb9VwNggBmYgaI/BMAgBAgFIOJvEv3u2Poq5ta3BSAAp/vuh+5fsmJ52nHMWxIciGhIp1LpKy+6yBaey6i17irmvnD2WR/49MXpVAomDhzMbFv27/5yx69+fwuisCx7UlfnHjvOP/3dRx65/z6eWyFDiNHzKwAAoR1yECCO7rEzQGAQStkjtfL6wVFtAs9rBqFvDBlmZub4XgpGgSAQhRSWUlIgWJIzKSebyaZT2Xw2m08pxxJCCQBBfuCHYaA1AgrRCnncCl4I7athjM4WKJ/LMEde6q0YVqSUQyOVL3/iU3vsNLs62m9ZNgI2KyPvO/SgWw4/4pY//6FUKJqJCy7MXMjlRb7AAMxcbzbvuOe+2+++7wPvfe9VF5+jpMfMCIgoGRFfmF5E4KAIN4YxU5p0459+86mvfq2Yy/lBwMQUOYMXTUgQMDJASynbtm3LzudyHYXspK7OGVP75s2es8PsWbOnTS52lIA5cL1Q61b6PN6HRaakk+3tmUxEb82EVApZrdUO2HPvCz54arM2qpSDcV4oTNj44jkfvefhf/i+J+VEVi407nIqKYv5HAL+8OabMyn76k+f26yOoFDRbUUEZgAE5OgWIyAIUBz5dtIQ1ll7wKSEQNvGVmbwMtiMcxbmMAz8wKtUyyvXkCFjDKHAXCa79ZTePXacf9QB+x2w+y6FUjFsNoJQS6liiGA7QhGg6Snm+KWzaJnr69xSAwqAYbKU9bNvfWtadzYMfIFRQseIGPjelKl9zOoP99yTy6Rps7U9oiCQz2UfWfj0O/bad3pfdxhqgVHaiIiA3Pog8iXIcXJCbKfSjyxa8ud770+nUkTEre/2kjbOjwhEIaSU0ratlG2n06m04wDz0OjoY08vuuWvf7v93gfqjWDOzG07ujrDwCdmgcgQhz1ismy1Ym3/7Xffk3qJhFRs0QGlUqtd/NGzd9l+20a9pqRERESBKACFsmyvWjnr5BP32nXXWqMhxGb8TRlAIHqe+8cHH8NUjuOENEoDkeMHXoxDNbbey9d8C9pIIiJDZIyJoqdj2x3FYiGbWb5q1eevuebgM8687pf/p6xUyra0DoAJwDAQAgCZnq6ulyllxRaNjIP33v/8009yK0OWsgAQQSAIQBE9msbojKUvO/cc3GwNsfG3SgqxfPVqMBEY4uec45eFCBxXmgAY5YbtVJUn2JMZYwxRynG6S6WNAxs/ccUVx19w8ar+kWy+YIyOi2UhgHByV3fktN464EBErXUum/v6py6w0GMmjPO1dheBAUBJ0ajXDtp7z9OPfV+5WlVSbkZwMAsU5UrZhDpuWbRSS46cR9tbRO+4XVhutu4nszbGtuzujo47H3zoXR8//8GnlmSLncZQlNqQ0Z35XD6bM0Qv2jDcIsEhhazUa5/+2Nk7bz/LrdeFkFGKF5dsEKf0ACCFCBujl5z5gelTp3q+LzZr2xtRG0PMEPWnMB72RE0tHGtvQZSeclxibt5OPDNrrTuKxY2DA8ede94f/v6PTKGgdQDAWgeFXLazWNRGv0U8h5SyUqscsu9B577/BLc8LJRqJfHtDmD8oCIACgwCb2pv6dKzzm56HgqxmV2aAEBgGusnRP3N6D/eJGHAuPx4I3rnWutMOh1qfcZnLrnvsWey+QIZbQgz6WxPZ5fWRrwFPAciah0W8sVvXnihBQEjiug5bYVujl12FPMRAJRSbqVy6rvfedj+B1WqVbmZg0sLl4wv6FgwQLvTya2/vYGjY2OMY9uh1md9+fK1/WXbsY0JlMU9XZ2GCN4C4BBCVOv1Sz/2sR227Ws2KgKQiRAZgKKWIsZehLH9yAIAgiD3K584t1Aoaq0394tsJxvRS+KWe4j/ysTMGLfIx9zdG4OPbDq9Ys2qi6+8GlUagEFA3+TJUV9uywaHlLJSqx6y30EfO+Vkt16VUkmlpFJR6Yjx3AGR4zfQHi2g8Br1nebNOv/0Myq1mpKbrfUXZ8TUGo6MeTweSy6wFU3GTTreKNPGdBaLt9555023/TVX6AbtT+3peqnW2xYDDkQMw7BUKF158cWSPW10qlD66o9u+Pkf7krlsiYMACh6KBkYmNqOnJkRQCoVVEfOPeW4XbffsdHcXG2PVlRphbW4gI4LE47rKWqnHS/E0BvjP4gy6fRV/3PdhsERlqqnq/ulOshbDDikELVG/dKzzpu/7bR6dTiXyz7+zNL/+tkN//nTm4ZGmkoiGRq73Ny++oAIDIwAxoT5DH7pnLPMZoz03O5PjRXV3CpQWt0PaIUbYHrjuRzMnE6llq1acf3/3YFWvquUs60Xn11vGeCQUpZr1YP3PfCjxx/dGNlgK+EFfPGVV1lSLl+98qqf3OgU+xgFCjGOMxE1EAmYokiPAprV0SP22/OEI99drlY2W2baTkRbDgPa3oHjJGPMz8Tz2zfaeRiTzWRvvu135aGB3u6tMuk0kfnnVscWAI4ooHQUO668+ELFLhGmO7f69s9vefCxR9PpdCGX/fGvf3X/IwsyadvoMIJC+zbg+NBOhIjaK3/uzNMnd08OgomnimGLNoGt5iciY0zY4XY9xWMdMIJ/B9eVmdOOs2zlit/85e7JPT3ZdMoY2iI9hxSi2qhf+vFztp+7db1ey+ezDz/++DU/ua5UyGutEUUYBl/5/g8CY0lEHusmtG4Jt5rZzALZcxszt+q68MNn1JpNuTkyj/hmx0lGzPkaIzwzMGM8ciEgg0BvXLmyaf9UWdZv/nB7Z3fnlMm9oQ63PM8RBZTD9z/4Yye8pzncb1uy6dMlV1/j+66UCgCIqJDL3ffIQz+99Y9OscvoAONITxDlpy1fwsjMJIVoVkbOfO+RB+yxV7VRn9DgEtVGGJcjLWbNC5r6rfyjNcVHxM2Qd+C/8opElE2nFixa9JNf3ExGI4p/zknf1OBARB2GpULpGxddKNjXxKli1zU3/uqhBQvy2VybwmOIspn0Vf9z3Zp1w47tEJlWkOdxz227K0VExkb38nM/alsOTSTJFNu3hGF8P3QT/MTBjmN0EI9N4SYwuvmBb16axTO+8v7UFZc9u2xJynG2MHBEAeWSj587f/aUeq1cKHQ8+tSS79xwY6lQGM8cZmbHSa3bsP6qH/9UZYtsDI8VkwRomA1AnJkCsxBQr5XfvuM2Z55wfLlWUxPsPDYJZByXStGt4DGSetT2iPLliS9WzTZbbZPL5uhf4wNy2awScgtrgkkpK9XKke847KyT39sc7rckNr3w0v+4xvPcf84VtNalQuHnt/3f/Y89k8nljA6ZDIBhJmZCMmBCNiFTQBSyCZHJLfdfdOp7587atum6E9X2aLE/22lH5D+43fmCcSGG42YMTqyvNWQymczt/3PDPrvv0Wg2pfgX0I9IRlsSOKIKpVjq/NonP4G6phnTxY7v3fyb+x99uJDPv6jDFIg6DC///n/7RgogYAMRJnRIpNloYwKjAwo9Hbgm9BqNWslufvYjp4T0Im3KiOT3cn9e8lpHq1XGtNcK2tkxtqcvDK3wghNayiKi5/vzZs3u7c2FoY/4utgib1JwSCFqjcYXzjl/uxk9tepwLpN6evHa79xwQzGffym2sCHK53L3PfLwDb+7PV0oaq2JiUmzCXTgBn4j8Opes+a5DbdZbzTqruutWbP64O0mHfH2XRtN11ZSCpQCI64hMRvDWlOoKQw3+aM1aUMtJjALBClACpQCbMtyipPy3ZPznZ3ZfC7t2BYiU2h0oE1IZAAIOUpI2lOVCd6c0Frvu/teDM4riSkvb+rNGVDK1cqR7zj0zOOPrpc3WpZtQH7+29+t1qqFlwZHnIFn0ldff+M799l9ck74fpOM1mGgQ1+HgQkDPwi0CdgYbbQxEISmn8yxb5v914efGax4UgoAUFI4trSUsJSwFEoppYj2QBgAicEQaU1eQBGA3JBCQ8wUhuKhJ54+7txLpvQUtp7cOWtq9zZ9k6ZN6u7p6BDpHJAxvu8HGhERCIE4XmCZSHAYrTuKHUcduD/qUAjVzjrfIuBAxCAMOju6v/7J89kfMcYUOyf94Obf/eW+v3eVSi+/wcbMKcdes2HD1df//L8+cdpIdVQbrQPf87xqrVauV0drzUq1UWk0616giWyL0ykxqZS69OTtpBS9nem8DXlLFzIq46iUYluBUkIACTYMjEIQoCHUmpshBobdIKzVw5EmDzXCwYoZqoVL1j/1wIr6LaNBtWmIVTGf33b6tH123uHAPXbfY4e5XZ0FcOuNpodITBrYTOxDNVopn3T0e3eZ3Ufu4KZ7mm8JcEghKjX3m5++dO42XZXhwVwu9+zS1d+87rp8NvsKajPQ2pRyuf+946/H7LPr9n3ZjevXr1y/8bnV6zeMVrWUpVKqt9PZeiueXBS9GehMU94KU+gLiQAMVAc2oDUYDUxgDGiCcJO9kbEKVSE4AnICuhCkBGWBlQJRBOyj0FQ9XFPFpRv9x5eNPPTcmut+tfDKH9+4TV/fcYft86FjDps/Z5Zfr4YSQKZhgrq0iGiMzueKnzztZAoaws6+/t7amwscSqrRSvndBx92xjGH1cuDlpSM9he/d+3o6EixUHiFu0koROj5V/7sV5eddugfHnho0eqhUmd6j3kde2xb2rYbi5YPugFBA7wmeE2ohaTDIAxZa+AojY3KSwPRBjq3+cAYOaeY+ycw2nlkgYgSpASpEBUKIaRVsqxSKrPjvPR7d0wDz1hfk3c+27zxnoGrf/qr6//vT+edetKnP3BCyqqCdieqlFVS9g+Xv3zu+TvN3bo2sjHvZCbge76pAoof+JMn9X79U+eRP2qMznX2/PCXt93xt791ll7F1hoRZdPOk0tXX/3L20Hx0ftPPn6PXEE2obEaBus6aHLoc+ij9iH02YRsDGuDxsTVJVHcOmu9b20lxc1wxFYbFBAEg0AhAIUAKUAIloKkJGWBtEDZoCxhpfpSqdN3yZz2tr47l2z1+ZuWXf5f33/oiceu/ex520zrYNb4+pw/Iiop+4eHjzv80Is+cKxbGRBCxKuzbxlwCCEarnv1Z780a6vOynB/LpNdsmLDN667PpfNvIbEWyA+vnzofy56+2HbK9iwwq8Ns9fAoAGBx0HAQQihYc2xmyDAMbo4xCvOjBz3v7FFx2hzVKP/DXGgEYhIgBRtq6BkoRgFoiVBCbIttlOk0iqdO3TmtJ0/N+uMa5077nn4XLz21mu/bVkZBn5tIQABpRTamIHhkZOOPPIHn78IyOdoAV/g6w9YbxZwSCnLlcq7D3nn6e86sDG60ZIKUH3pu9cOjYyUCvlXu+wqECuevvCIyYdNL/uLV0m3jM0KNVztavINhdGGOrbvL4zbGWgtMbYJ49watrZEEuL3MXLGU7ziyjRec2OUBpURTiDtpkhZ5Ne0W+vp7Piv92WeX9Pz5/sf+sPddxfS1otORF+u493SBQl1WKnUctncF8899zMfOJZ0U2uWKExUB/FbwnMgYhD4vZOnfPPC87Q7ZIgKnd03/u6uW//2t47iCwNKvCOErc0hbiUAURxgAIDQcHfeOnFHj1Yu4NER3Qx0IwybSAGSETDu6W9tJ8cvA6KxLo8fjyBE1GxuNTOjzQPGFi80jjPtHWkek9UARBASpAKRCkQmlJm6Vytv29v9zh3y318Ft9593+H77ScRpECMll3a+ARghqh7KVovkZkNURgGfhAQcXdXzykHH3rOycfttt10tzpEAEIIAAaaGAKiepMElHrTvfrzl82YUigPrc861srVG6744XWZ9CbLWNG+eBhS3Q+1YZTCkkIqycShIWNAScw4aEkIfC51iDyUaXg4KHumxkFTsI5mHa3hmGhPOABiNY14zxZi8RRs6am0WOVjrjpKR7ANbog9TnRjoAUOBmbSaEJAH6XPwmO2XFsNzM5JmUotWrpcSkcqNVoLQmOiFhwxR5iwlUg7Ugrh+n7TCwSibdvZdKavd+q8WbP3f9vbDt5ztznTuyFs1mujSloKgFoL28D4+nuv/35wKKVGRkdPfPexp7/r4ProGstKq1T2sh98a92GdZ3FYtTYiFxFww2D0Ezqzu29w+QdZ3Rsv3VpUkfKTinyvdGR0WdWDDzwXHnBKjPa4JQFCMamMtS9oAxhA0IfIuIExt4CEOP+cKymEcUH0XYD0TppO/9oIQKZQWB7nhb1p5FjxY02CWycA2qxwFhqdAjAZhF4jaaXSuWeW7biwScXz55W2GPb0q6ze6ZP6UjZKjC4ccR9fu3wUytGn1425KQypx151AG77ZRNp4SQU3u6+nq6Oop5EEReo1EeBBQyHrhHwQ7HGGhbNDgQ0fO9vilTv3LemWF1tTa61NX5278+/Ju/3NVRjEevSoqmF4ah2XVe38mHzjvqbb3TSwFQA3QAJgBdg9CDSc33zDawn1q4Hm96RP9iAS4bEtfei2eWyBsFPxASIpESHMsbkKPohNF2bRSuiNtpHEe44DZnpxXwY6REJW086MZWChJTfNpT4XYKA0AGfA3dGV65Vv1pme0GPH+b7EcOn3vMbqUpXRbYKRAOoA0gQU4GOUsHYtE670+PrvnTQwtGR0Y/88Hjd9h5DpVHfe02qi4DCmFJaXFEdo+8YhwQCcC0mMxbLDiEEK7nf/fLF289KVseKmccZ8OGgS9993uOrYg4epKHy815syZ/+tRd3rtXj6NCqA2bqgsmBONz6LLvcuCjCcB4aLwdS96VhzVPnaUvubP0mTt7Htja/uZW/QUyVRM5WQYBrQSDAUEIQIYYEwgoxsvc8DjBSoyFLXB8ZRGPSGIYQXtVpZWtcos5yMAAIXFR8++HMpcs7V3fVJ8/JLz46O5Cjw1hoOvMUgASWhpth9GANoLDnXp4p/d2feTgzh/98fmjL/jMu/bd94qzji/kOwJC006WmZlNTFtpSYm1sbylgkNJOVIpn/iuo08+fI/66AbLTtu5zq9953vLV6+OOuUIXPfMx07Y88vv2aqj/6ny7/40NDjKAQlE5dhWIWN351LdKWmT0T75HpvAD5o6cHcqmluP9a54ILjisc4hz7pmyrqs0C6hJeOAIlraTMyIyK1YEkWc9tZcXC6OA0MrQkSfHSelrW2EcdkJIDC1PQgAQ8gwyeLbRwrnLevN2fSrU6rH7CTYG/LXBzJdEE4GEES2RH5oVi7z16wIRkYo9IQ0VloWOkqX7jr9lF3mnnH9w0dcuPJ7F39k3tztc4UcBE232SAmgQLGfhpN1Iq2+vcGlK36tv7K+WcFtQ3GhMVs4fb7Hr3xtt9HAUUgVAO87MN7XbTNcOXXP9ow6PoGAh13d5CbyGWUYBeswsx8fppCCowfIIc2kB+gAv7KPoM5MJc81nMuTf1279qcIG0wggXFVSuLaGYuIg2vlvoNjL/BcabCsbPBMVHJNlu1RdoYSzVib4HMTMQhiDTT7ZXsBWt6S7b59XsG3z5X+Y2UtIxCjz0EAchQXbikvmipqdRIAyEQACNIAZZw1eMbtprm3PX+OR+5ddmBZ31pj3nT99xpx6MP2HPfneZIKRr1BgqJUcEGxBSyCV9/1vFvU/aRQtSb7jVf+MI+O2xVr1dTtlWuBx/64jeq9bollRA80oRPHpr/QseiVX98cqCm60YYAzaDTaAZQ5AgAAQa3zTWud6gr5xQWSGEjMRAbAwHoThoWlOH+IvVxTKog7O1wMTSe5qiz0IiJgJmJGZmJAImJkZmJEIiIIqk+pCI2x9w9O8ETMiGDQEZNBGpyIAxbAxGAn9EHBLaDKt9+8L1Uz0SNx6y4aCt6s06W4IQBRiSSuhGOHDXwsqTK3wvCBh9LdwAdADgge9BJUSPZL0a0vKBk6bXVgT2bU9Xn1i44Nd/vueBpxZPnjRt7px5rANjNIJhNmy0ncr95q4Hn1+x/EX5f29qzxFVKCcfc9xJh+5ZG14NgE62+MXrfrZ4+YqujhIZ0/Bhr1l8yfTlP/5rcHt96mpf+QazkmbY4e6Ou2eqPs3STQ0BgCVQCGwOm7AGnTMw3c3MKARIBAT2NF72tuFFI/Zv1hd2tNyTsqPDjKLV2ETBcddEtLXYWlnruF5ILLLRKkwibSkcW4pGaGsyMTPHlRDHnRIkBmT+znDPate6cs+Bd27dqNaFZWvyGTWLVNrrD4cfGQibIaYEaA5DNiEozStd9UiQe1KnV/mWR0IiTEnpg9bWP7nt0JL61OdGO1LC3PPwY/c+9sSZxx//lXNOtUXg+4EQAgBRiC2yQyoQXc+dvtXWXzn3g0Gtn2W6WCj+/fHnfvz/flsqFIwhRDAsduutnn5X/tZlhWJaT7KNRF4fqgXN9C+4NN0J3lOsfDA3UkCqaZDAKIBDGF7OnSGkutgggmIAJgKJ8NVdh/4xnP5xuXM3Ve+Soc8okAUAUpx/RKFEII8nbjEgU9TLGCejgK022LhdpRafnIkx6pS0aeaaMQt8W7Pw50r+sKmNC7Yf9V20FYABDggd3xuF/kcaOjCgBHmkCRQBabih0vWbenF5Q0mFfUXuzBAjPl1P/XVF/vf1xoxS8PSQRciFXJaBv3vTTYuWPf+zyy8qpCxNAiUDIPOWWK0gBqH+xkUXTS1hebjiOE6zLi77wXXMRgqHiJixlKIbHi84yF+dN3BgttEpQmQOANeH9h9Hcr8eKnxnoPv+Wu5z3Rt3tL06o2IwxBzi0GosEaSKIBikAoHghjC/wz9r1uiXnpn0y2bnxYX+gCJN0LjDBW0hToTWlj62uhZxfz1uhUXwiBXguNVAHZONGSOdY7sBz4Msf17rtAVdNG/YMdwEoShKe5B9GF3Y0IExiNpj3yBq7vfVf9am3NvIOMinv51P3K6yk9PIcmhAjBrr3vXW1Y90LFyZ6kiRJoiGur1dnXc9+PDHv3HtzVd+UfijOvTIBK8/JX2jcw4l1Uhl9NRjT7z4jBPqlSEhU9lc4fLrfnHDrX/IprNeEIaGiKgewvY59463rT662OhgjUwSIY00VYX7ZRr7ZRujWt3fzN7nZnfPerNTYYPaKqxgfEylUUgAxIhwToQ7FPw/b8guaKT3TDdKrD0DZCJaF4aEoWGtQRvQIZABNswhsAE0jIaBQBhAAkGAxNFbNsAGjAajQRswBCGBNqAJNXH0zTVhgeHuoPiraun4abWL5o54BgUiMRiDiFBZRfUhBolkICRQhjf66tLKtEdrqbmd+ocneZ+ZNzKnOZoeDaBiREUXG/7eXe5xe3n3rnPWlZWtYgAYokIu+8SiZzPZzoN237ZZHUln8r+56x9LVqzYYnIOFML1mzOnz7rs7NO84cXAQqDl+uFh+++7/557CQQAzcanoNFsNnrDtYHff2/FzZRX9Q4tSXt+k7FpICTcNu1/f9r6bw70/GSk45KBvh/0rpmKgc8oBDCj70Glnws9YKVZ2iCQNYtJWXPGNpULn5x8l5c/3fLroZDMAli1FLtIQIgYSNEAWSNZ1aLJoskyAEEICCgFSwSBIIEFsMWUYpMR1IEmJ8kxRjJLBgkMCBpZEzJAReCf3UJa8ke3LSsBgUE08SJeo4ojG9gAmxC1jlbg8OralGfr9t4z4aenBDPXr9/4FKFAQYINM4EAqKyEPm5e/o7RE34xefw918aUCrnv3nTTMQfsOqMrz2jhlpVzCAA/0Fdc8IkpRVEe0ZayAEIKwwPm90JE7EUE0sZ3vWZtqNLTPzzSyI6sTE1bYM2YN7xgrrfWDVEJDg0aAZ+dNBAYuL7cednA5O9PWSeIiJE1gcBGDSwLlQAhECUio+/hYd313nTnw27uQ85wr6CKgQFSq4yzUjvryBkka5Rlg6XHwgfkVoYhgLGl2cStXTVqpRrIbCOnBeXAdAjTK4MZKthWuVNFkAOTBXgmTD3hpd/W4e6ScSt1lBIi+DBwZT1rDYxIhgPCjObvVHvurWfmd4f/e2owdcPgcD9ZEk0Irs9SswhhKBQgMb3G7D+3NrOna8WAcqzW3j6zUtbwyNCPbvnrf37iJK2918wE+DeAQyk1PDp6+vtOfO/Be1SHVtlOnlgbQ7aSAIBIQaBrTa/pBX4Q6jDUgZDStoWygQY491v5tr2kOgRWVnQs/+8ifK53cK2x/1TL/bjaeUFpaCQExYDMxKJZB9tBAFA2ALJvcHY+OKCzedvG/B1hsRaKB9zcstCpgLQkdKZMX0bvkNJTbLc7bXqULtlUsExecsoiS6GMKxIgRsPgEzZANkJR9nC9pwZd2e+pdZ71lJu/25Ohhg7UM21/P7u2gewm4eE99QxwzWCbDuDVuVllkkAEIYsC0sNB5reNjoIw1xzT7Fs9tGG9tqQwAYQBFCQ9G9jXru14qp4OAWemg51G/UoDpdhEUYyIcpnMbXfddf6JR82YUtxi2ucC0XXdmVtPv+zj7/dGVwpEY3xHCTuXH664dy9cfN+jTyxctnz9wEij6cXDtljDjLmlrPmzMH3x7K5zJg0PjKAlOGRUii+dNLDIc/53tOMd6cY86bqIiMgMQYBunaNlJWkBMzgCDpvUuG1D7j+GJ2uBswrBMd21Pbu9Hbr9mTnd6Zi0pLbyM7RnFK0xfbzFIaCdtbbKmvgUg6bGUV+uaFpPlp1HRjIPDaS+XelVxF22PqjbRQIbUVDsfmqj4GtkAs3gaw4M3tDoKrtw0QHBwYXawHPGtgT5rH2Rt8zDOvOxRVMGQ5UWBABrAuvOkWxOkRSbJJ3MbNv2ho0b7nz02TNPOPz1K76/QeBAxCDUX/3kJ6cUqDxaR6my6eyGSvDjm371u7vuW7F2QxCGSkpLyXHH24z1ryNZJwXwjcVdO07y9y/VByugBNcNzraDU0ujVw5MvqHaeWXPOgpiOp8R0HTRdkipmOfnh7BDyu1y6PBp9ffPr+7S5XVJim55FClCwHgSK1v1a3uWgjAmHM6A0F5bAaS4SrEET0npqR16v61c4PJgU/5jOH3TimL/qNwp5xsUwjABGgOBD/UaGAYiDgjTzPf4uUeamVkd4Xk7Vvy1nq3AhKANpoA2FO2z755SDUWn0oYRABzBKNkwvhQd6O5/PPyRk9+1ZbTPlZTDoyMfOun0Yw/cpTKwTKhMJmU99MzyMy779rr+gUzKyaadXCbd6iT9s8VcTomgQr7i2a7fH+imXeMGqJDrBO/LV26rFu6q5R4vZHaRzWZUuRC7Hth1QIQ0oBLMBPO2EXfOWTsn74GAkNCHtka5wHGcmnHuogXtWOI+Du/YphAyAbVr4mgXRUS/RFea3z3Fffcu/vqqJYcdf8gVEkMD2kCtBn4IhGAYmEEh3BsW6z6efqA7HZvDTQJAbVi7mO2DLy3u2ViVnWmjCcd1618cGUzk2NbTS5egVmknTa+v1bHZwSGEcD139sw5Xz7rQ15lI0pHgql76uJv/6x/aGhSZynUhig6XeZfmGHI2PTEeudnA6VP9Q2vXAmWRJ9hmm1OLZU/t3HK7Y3inh3NqgYBTIxg2PXASUHoEjsqvXNvMdssBm5oCiCURJYxg1yCiN6iiBqLQrRbW/GkJdZgwSiqIDOwaQk9MDODYcFEZFpEZGTAgFEA9PUImt4lNgT1x5aGzNqA50b0ESBGm3mJdh5209MK4SnzvHCQBYIJOfAxbfPfdPbPS7IdqTFkvLwxgK2s/sHBR55ZEmrTbse9cgcvhGjHozfCcwQhff3CT03KetWyz4DZYuny63775HPP93SUgvDVCT8axpzFP32qeMpR9VwqaPpgCfYYjsjWfuJ03lnNnp6zeyAIQQhgBtAGdcAh2tlDdrEKZVNjzncpO43KApQMEjRyaNgPjR+YIDS+Jk0chBwyG47GJ/FudNT7REQhQAghUNpCWDYqRCWFLdGWImOJlA2WJaQEREnModYmRDKp7bpDWarf+QhL1AGLWC4d8gIe87IbXXXqjvXZ7I2WiQHIIARo9/FNi4ukAdQrLToi0goznXD+edroXOZVcLOjExTL1Uo+m5NC8OYGh1JqeGTk46d98N37zqv0L0dpZW3r8cWrr/3174r5bPjqJUGZIWXx8iF1Rzn3kakjK5cBIriM3bY5LF//76Guf/i50zMjAwFHA7Z6gDBCM044MLX9TBpag44G39PVui5XddUz9dA0fOP5HGjWhsiQaQs1tJJObC9Dj8nQIYyb+0dHJEghLKFsqTIOZtIil5aFtMraIpsW2RJmiiSy+f16vX49cP8CzwgGihjvnoDH/KxCPnpeABUdhswEYQhpRUuVff/qdM4mw686w3M9FxFfeasjWrItFUsfPun03/zh1nKlrJRSmzWgNBr1+XO3/+JZH3JH1wgrBWTYyn7lR9+tN+rFfP61pdPMYCH/dnHug4dU7VU6MCglEMDh+dqNI6U/13LHOKPIHDFztWtg1tb5/Q426x+mdcupf1gPV8NqELisdZyHtogbCChAjeNscKxpTy2Bwnig35qqmThdZQAUzBjqINBY8wGqEkEIkDZYWbDzttVZgklbIYvSQQcMPPocNDwQSAyCYHHoLGykZnaG+092GysIgcmADjDdxX8byZbrsjujX2FM2aTz/SrPHxJC1BqNyz756XPef8otf/p99LWb03MwM4hvfebTnXa90tQAWMznbvrLg3958OHOQu41n9tIDGmbH1tlP+2n53TWBobAkuBp3Nbxd0h7C73U0sDZVnhexEnXkN9xD9T9/Nytut/4FQg9IIMGRdRjYAKI6DEUk8qZgXlcqG7R3IHjgWxLArfFNoR4VQHbgzkJElACKkbyWOtQNQfE4IC9YaGzz0m0zYzgsUV2VgBzRsCKIDUUysP6GpOb9eF6XCajYZ3Fv6/I2IKI8TVe+1eDDM9zZ8+Y86H3HXvX3/+4YXAwl3KIWW2+gDI0MvzJj5x98NtmVTYslsqRyANl96rrb07b9kvrhbxCLghUGvjXtdldexo8aBjRABQk7ZNtPtTILjSZHZRXDwEBQg0qm4HqavaMDoQJQAesNZChiLQR3Xhq69nymEb5eD2mlj5ga5Vp7LQDhvHvokNVEBBZCJYBSIWWhbYRNgC7Ifplu5ALNYCBkDBAfiLIEOD+XU0c4cCgADSEtuSN0nqm30mpN+JkbYHY9LxzTzs1nTH3PbkwDALMpMEYtZkCSr1e32WHXT/7kVOaQ0uFso0xuY7Ob1z76+dXrur+V8vyryiySL5zmXPBLOXY5AcgAQhgr0zTQXrYS5+QBgHM0TieNAQuuWB80AHrELQGIiSOyDvMhC2V8haTi7G1j8IYbagwUqR1j+M3Z8fEAqFF8MCI0CFQABsBUgNpYA1MoGwG7QsJAoAZBNMwy6f9VGdK71bw6rWYQBRq6MzwPzx7sCbz1ut8jl5RAKrWa/vtue8HDn+bHlj21PPLpRSw+cIKESnL/s/PfCoHAzVthBBpWz2/evCnt/6h8MqW5f8lONIWL9poraB0X8EfGsJopjUn5c90gkV+ahhUVuggejFeHXRgAtABaI1ag9ZsDBOjISZCppi7HRGFqc3WiInnMdtvbDEOW2cCw/hNp5jvixzx2qMz2EDFhDEGRNsDCBvaD6L1GAvgOe2sDaztu/xtRNBwERkMgfbBmQxPVtJhCGiPSYptJjPGWHbqy2d/MI31jQ18bvmqlG3TZgKHJeXg6OhlF3x67x36yhuXK8sxRtuF4g+vu3V4ZOSfN9heCzgAlIThOjxezs7prg8PGyEwMNwhzG4Z95fl0hKdejvWvWj7rVYDY6IhRRCAH3BoUJt4zk5RMkFjB5+Mnf3aDjRtygfGtUs7J43aUe29VGr9XxElpAIEgWWYGYUE0sCBS7W6EMAAFsIy49SN3Knk5zX1EyLHR7BRBzyx0rHEJoLHmyf6y6GR0c+efe6+2/X69cGl65obBvodS22WhFRJOVqtHLLfQReednR14DmpLEM646hnVw/96k935bKZiTzi1cCD66xTdpfWUq0BEEEy7O64P+eOhX56X6duDDOAN1w2OuUHEPpInqEAWHPUwTIEBKCJY9V0Bmo5j2jAZqh1CBcBIwjROpmhte8mBSsEhTx+AqMESGRBwAKYwAgIABjB8iFXazaHqjo6VRZhqU4j8h4l13hABIKZCB2by2m1ZNB21ObNN6SUlWp1/z33+fTp7ykPryp1dCxY/KTrNtNO/ABPJDiildfOjp7/+MyF3Fgdca3YkJXO3fynW4dGRrpLxYk6XJ4ZHMUL1kl3v3Q6HdYbLAEChp3TXoc0T3opnQKFjBKoPCpFtx3A2jr01631vurXasjIEVJNFnUjGix9RsOoGTQAMVKsL7yJSCiNHes4dnS4RFZAFsYocYAySHlJJWmKwhSE6VRmktI9YDoEpQmcZjWsNYQAxdQAuSRwulNm17zXcGNSktFQKsEiz95QlmnJmy/hEIhB6JdKXddceoEKNrgUGuJHFz0vxJhmrprYn1f1/O9c/s25U6zRwbplOcxkKTFcrt/+9wcyKef1ZxvjC1rHghX9uNJ1ZhVFo2GkgMBAnwq2c7xn/dQaYxV1yAjh6NBN92bveGryM7XM+kBVSQQsBIISbElwJNsKlEQpIhppi1Xamqi0zqqNV+4pxkZMMzYAQYtlrg2EBKEBP4BQoyZgRoWcFaZTmam2nlX2j7HDbbTnC0CCFcZeE1g7d/lbi8D1AYgZ0BjIlWDBUNoNMJMhoM0VVhDA9cLvX/657ac6o8MjjmOP1oNnlq5wbKs9kVETF73U0PDQ2R/46EmH7Fxe/4yybCZNxLlM5oGFq5avXpdJ2RObeSsJ5TouGFTzuhA3AArQjFnm3Rz3H27m+SC1nwyFgpUj4Yf/XxjKjulOuGfBnZ3zZxT11JzpyHAmw3mbbSWkpWR0EGwMjJj8Fc9V2if7RHIuKBC4fbxOhAzSxmgODQchNzTUPBzxcMBV6xtqVcNaXHee8lL31rP/N2B+OqnaA8Y38FSQqrGcn/akzyGDZCQAKUB04CNPpOTmPMJJKTk4PPL58z51woFzyxuXC+WkHGfhspHV6zc41tgBxGqC7pOqVMr77bX/Fed8oD7wnFB25IOJNdrWI4uW+X6QTadeyXTt1QUXgofWWe/fw7KUZgJLokDeI9P8UbnrYS+zq11jgj+Ehfn58NzO/j1yzU5b2xKkANTANeAqEEOkjjGupfWCeXB86AXyWESJbxzGwaXVGYm76RJBSBACIAuYBW2gHIjnG/btw/n/rXT8qN79hcw6C2E5pSXy/qUmhBAa1AREmE1RLSMXbrBSanPFFEupweGh97/35M+f8e7q4BJpp40x0sk+8uyCRrPeVRwL/RMADilk021MmbLVD7/yJTtY2ySUAqOzXgUQa/P8ytVC4IQfScQMtuLHV8nmvik75QUhSwFNwu1T3kw7eNTPfMhCl2EbJzw1tbrXJq1hRMfJBLRVElqHh48vUMcEN7C9rR5Xs5votCC3mR7x1zMyRifsMBEajqohEMB94H2s6B3k1K4anfQg5feTtUU6NS2ld0u5rg/ITISh5mIHLPbsNWXL2TznJFtKDY4Mv+vQo7536dnuyFIQFgABh8TyoYXPCcTxP/X1gkMIEepAWc5PrrxqRskrD1eVUsw67hIwhSQGy1UpcMJ/VWJIWbB0o1haxXlFrlYBkQ1ir2UOzdSuLXctpsw7041tVcVnaHhje9HjTsYZ24gVY83QTY44aDmFMeqXiGAhxrkNAMRN1qfHL0hGFa+PIATMl963SqvvcQsLMLsmtI7NV52mHjVoCRAAjsJSH9y/Md30MZ0lM9EJR+QzjnjHO6+/7EKoLtPEUkbPmBwsN55avDjl2DRR4EBEIhOE5vqrrt5329TIxuWWnQGmseYyoiGttYHNc9qvlDDSwIfWqZ26hVxPzGgbJob3Fas3V0vX+91LOVUDjOK3JtAMFNGDGaVgbG8mbSIojMBMPP4k8faJwWMBZUx0cqzjvkmWEJGTRfswN4ao92Ujo+E/eamUgtO6R6OvDDUCQMZBU8S//SMz4R0ORBSI/cNDx7/r+B997mysLwu0kVKyAQLIptP/WDywvr/fsayJ8RzRemCj6X7/q/9x7P5zR9cubCFj3IlFZJTgfCZFBJvJBMLdS+2PHmKnUr7bZCmgGuAsyz+tUP7uaNeTfpr/6b7hOCfxomn8hNYELYxhPMQjAIkQEpw/efjtGW84AIVsEIyBUic/00g9sjqVndDcXUnpB37T8y/+2HmXnfm+YOT5kFEqFb0s0lpI+eiipeM7HK8LHEIIIlOtN/7j85ef/s6dR9ctVHYGouctFrhBBCYGS6o506fd8feHcDM4DyLI2vTACnuVB5Pz3KyDQIi4g2d2De9daloOKBvQAlSAAkABSACBKBEEohKg5LhT1rjFHo40azkOHmxizERtslixi9piLtFkLqaZRrI/xCgFIHIQIiMzo0TQQK5hAg6BApjtN/ubaOIKCARg19b0g+XZSkN0Z42eiJgihBCIo5VyT0/vty+75JQD5lQHnyFUQjAbE8lRIBjN1iNPP9seqbwucEgpg8APNX3/K98648idRtcskFaKSUc0zHGLxQxAoVs5cOdt//uXNm+Gg0UYwFbQX1U/fy77+VmeNYwyZMFoiJn5oEwDZIuVAyARZFR0GIAo0AUwtv6KbYc3NlcbTzKHsbOXxmTdxsuzbOJzoiBC404DjD5BARCAAJYwEIJr0BAaA8ZAXzcP5dQvnsrn7JcmD78avy6lbDYbbhAe9Y4jvnb+h+f20Ej/c1KlBLTyZAZgtqXcWG4sXLK0PVJ57eCwlKrWa/lc4fqrvvWuvWeU1z4lrRQyxVd3TMCCmQwC1JvNA3bYZu+dtr9vwZPFXE6bCa5mDUHBNj95tHj6rFrf5GBwI0oG0kAGKyGAjqMcCkDB7dMjow/Gioxxom/AHGen8aC2rTb5AlJ8S8KlLUwI42mn8Qo20SbgiLBCBoiAdLy8LwRLwq13os8+1bFiyOrMkqHX6y083xutuPPmzL/oI2eeuP98U10yNOhbdhqYWj4OmImIHCezaMnGDQODWcd67eAQQiDC0Mjw9tvtcN0Vl++ytRpd84Sy0rE6TjvTJwZgJEYAQgShJOovfPi491y82A8DW1lmQhMQBrAkDNTlhXd3//qA9bkql2soJQCBkjgm2EjIBk3rGC1qdyxwLA2JeKKbHNnHY66ltZcQfVas/xVXMjiWkvJY/zTOQ+PKJ9rSJgaOmqexCohhEAZ2nU+3VnLXPlAqpV8jMiJuMBM1mw0/1DOmz7rkuOM/eNR+Pan6yODTiJZlORBd+biuImAgY4SUjz+3LAj8XNqBTR9d9ap8lB/q04475euf+EiJN470DykrxUzj83YY20ePmwMAUK/X95pV/P5FZ5x79c+anptNZ0wkKz5RzoOh6NAfl2c/Jnuv3n5gqmWGK+ASkBBEwMAGsE36YhwrQ+JFe47G9G0m4NgRfePgMzbDf5GiHDcpW7D1q9P4qNTKTtsiyQwgkDOKeybBzfXCxXdNsuUmgkGv5L5ExkR+4Lu+7zjpHefvcuKRR7zvwN368kFtdMlInaVyIJKbGXut1JIc4YDlgsXLpMB/zs+xd/fZ/wIWQgRhUK3X587e7gtnn3P8/vMaI0uDUCulor5QW3Ng3CXg+IFtCeqR0R2FrnueG77wmuueXfp8IZOxbZuYaeK8iEQo+2JeZ3DeNqMHphvdoAEg1EgGovSLGIyBaHOE2kclEVBU4tL4Y6yjRjnA+OYHR9Vp66x6aqmKQUvbHjcti3isnhIibqhqAkOADLYEIaEOYl0mfWu9+Lu1ubQkKVrR6J965wibRD5gMGTCUAdhoIlTTnr6tOkH7Lnnu/ff++3b9eZlpV4Z8EMtlYMtobxNYRc9nEIg1Dl9xCe/tX7Detu2X/DEvjg42pAMAr/eaEya1PfB4048/4Sjuu1KeXgtKjuWuYnjCW6ystnWSGOmiIiHgIjaUCGbHnbFd26575d/vHt9/3pbilQqFZ2/x+0D0l4fPlyNPuP0jO5zwowVE4gFgI3kMEfNcjMmyRHLcNA49eMWvseps2DsXbDVt6CWaFxrRWU8GMb4gziO3oEAAQhNYBijngcilEkuD+zQYF5FYl4tgdtx0S26jExkyLT0a1FKlU5nJnd3z91m5q7zt9tz/qwdZ06elAXjjzaadcMopIolQiLSYisWYlv0n9gw5NP2Qyvq77vo67Z8kQ2XMXCISCAYgJm1Dl3PN8R9vVOPPfzwjx575JwpTmN0dRAaqSyMmxmRj44kTXic1k38s6Och8f4/EgmtJAyuY6Vw/S7h5794/2PLFq2tFKtMhklpaWUUrL1MrBNKnt1XNlI7YnENkVj1XVgAAAkwzDLDWDLlpD5yzUmYKwGmcDMiACmQKiABIASnHOgLuXKupUVhHGOjFEuKTD6SAhEEEII6VgqkytkU9muUmFyV9eU7s6tpvTM7O2e1p3rzjuOJBNUXbcehBpQSqnGyqo2hXFc97eVFqPWpruj479ue+yz1/you1T451pBtb6K641GqHXE8Ovq6Npr1z2P2HevI/baYUZv1q0NDfe7UtlCIBkDYxyo9o3jdmSJuNwtLtV4dSRClAHLZnmkO2VdcMxuHz1q7yXrRx5bsvrxZ5c9t2LVhsHBkXKlVm8ao5lM5A/z2UwUv155fhpq6OkUd7xvpPaX4bU1IA0cwhXB1BoqJ3Lb/CJftfkaYQAgkF2QO0P9FDEYCMhYsMMUqM3NHvHnvmhTZloJpnfaUyd19XZ0TOosTeosdXV2FfIlJ5OxnZQjlZPOOnZaKVaCwAREWoeBHwxVR4mYBQqBAtAGYG30eB8+NjQigE1FUo2hAFIPL1ouBfCLZToqQoaSat/d99iqr2/ONtN33W7u/OmTejst4DrXR/zKsFJOIZsZl1FEveZ235hxE2/I7QMFXuSqIyJmicH36jZXdptq7TZrLhy1k9Gy4uqNo/WNZW+o6g+MVGv1aq1Rv+Uvfx0eHX3l+BAIbgA7TFfdNlctkGl0XP7foOMRzhXB6H/HweAAQIA20J1QOjTf2DvdbIDwgaYVeVqRlg+grcASImupkqP6OtJbTS71TprU3dGZy+cy6QxaDiACGzAVNsyGGVEJpdKZVBoRmMcyzdZyd+uUGABq6aqO7wpH53QbQUHVD55+flnqJfYBFCKGWk/unnT5BRfm0xo5DMJwTf/apas9MhqQBLLARtTvZATBYOK0fkyRtV3jM4+TaYUoQrYqOdhEUx4gylgNMwGikJZlO46T7Sjkerq6t5sxFUwolXxgwYKNg4PWpj3/f1m8HDBDiIoHCjoVL5P2Lbozh4bg32lRcXu92/P24hpbc9XDmezvOi1YtD6dsqgZ4roqlcPaijIXVjXyuYFMOqssG6WIH3SEFr39BSPC9vyvFRERuS3SPa4PMzZtpHgZwxI4UA0Hh1/y8ipmtpQaGB485uMfNkYbYgZEIcS4pnK0VsetO84vdMn4Ag/N8GL1GL9woNE6n2Bcqdg+yJkjig1aUqWdV3EKJhnO5dQ+vcZf6rmEyPyDek+FZAHJ/FvBQQAZpIWec3258+O5ocFQYJ0OmBHc9HAaETZUzbpKk7hBNERE1NrPfukngick+EmBuUzqJYcy4+gRLKVS8qVA32oBvHBGgi8Srv91yvfisf6fP+1VFTACoRnA3KlijhzuH6IOgP/nFu7zskVhzL8poLwguBQE/aLacUCqPlN6/etx953dUq6gQ1ACxo4Ha3dj34CXzPAyPUkFL/ocvwRW/+UtfQWfwa/0Vb+mCa0X4pHz/XxQDiqwMlDXVrqj3j68CYwBBECT8DvVnh/3rnXKvBXWdpjS8fAyO+u0tu5eoHD67w2FL98E27IMEbwQD5kfzqJmbT086acWaSeNTG+mFykAPMb9Ms0+EcoSPFjLrCpbtmB+E17PtxI4Inw0fAwBUUEKOfUmQ0Y7ZDZIGAA2kBZsyzcjMuDNeVz563LdDDkn0vnkSK/rzfgiAXKCEBhkWzQqAccbk/fx5ulkTXTxAi/WjntTmYDEEkvAkVgCjsQScCSWgCOxBByJJeBILAFHYgk4EkvAkVgCjsQSS8CRWAKOxBJwJJaAI7EEHIkl4EgsAUdiCTgSS8CRWAKOxBJLwJFYAo7EEnAkloAjsQQciSXgSCwBR2IJOBJLwJFYAo7EEnAklyCxBByJJeBILAFHYgk4EkvAkVgCjsQScCSWgCOxBByJJeBILLEEHIm9Yvv/efjyFe6Xb8cAAAAASUVORK5CYII=">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Sprite SVG: monograma, marca d'água e ícones sociais -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="armchair-line" viewBox="0 0 200 190">
+        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M42 96C42 28 158 28 158 96V140"/>
+          <rect x="20" y="92" width="38" height="78" rx="19"/>
+          <rect x="142" y="92" width="38" height="78" rx="19"/>
+          <rect x="46" y="120" width="108" height="50" rx="20"/>
+          <path d="M57 170V188M143 170V188"/>
+        </g>
+      </symbol>
+
+      <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></g></symbol>
+      <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></g></symbol>
+      <symbol id="i-whatsapp" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 1.6-4.7A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1.2-1.4-2-1-.8.8c-1-.4-1.8-1.2-2.2-2.2l.8-.8-1-2z"/></g></symbol>
+    </defs>
+  </svg>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="topo">
+    <div class="container header__inner">
+      <a class="brand" href="#inicio" aria-label="Ateliê do Estofado - início">
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-logo alt="Ateliê do Estofado" class="header-logo" width="247" height="54">
+      </a>
+
+      <nav class="nav" id="menu" aria-label="Menu principal">
+        <ul class="nav__list">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#tecidos">Tecidos</a></li>
+          <li><a href="#galeria">Galeria</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a class="btn btn--terracota btn--sm" href="#servicos" data-quote-open="choice" aria-haspopup="dialog">Orçamento <span aria-hidden="true">→</span></a>
+        <button class="burger" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="inicio">
+      <div class="container hero__grid">
+        <div class="hero__text reveal">
+          <span class="tag">CONFORTO • ELEGÂNCIA • QUALIDADE</span>
+          <h1>Seu estofado como novo, <em>sempre.</em></h1>
+          <p>Fabricamos, restauramos e reformamos sofás, poltronas e cabeceiras com acabamento artesanal, tecidos selecionados e atenção a cada detalhe. Do projeto à entrega, cuidamos de tudo para o seu ambiente ficar ainda mais acolhedor.</p>
+          <a class="btn btn--terracota" href="#servicos" data-quote-open="choice" aria-haspopup="dialog">Solicite um Orçamento <span aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="hero__visual reveal">
+          <div class="media media--hero" data-tone="creme">
+            <img data-img="hero" alt="Poltrona curva bouclé creme em sala iluminada" fetchpriority="high">
+          </div>
+
+          <aside class="ba-card" aria-label="Comparação antes e depois">
+            <p class="ba-card__title">Antes e Depois</p>
+            <div class="ba-card__thumbs">
+              <button class="ba-thumb" type="button" data-view="antes" aria-label="Ampliar foto do antes">
+                <span class="media media--thumb" data-tone="madeira">
+                  <img data-img="antes" alt="Poltrona antes da reforma, com tecido desgastado">
+                </span>
+                <span class="ba-thumb__cap">Antes</span>
+              </button>
+              <button class="ba-thumb" type="button" data-view="depois" aria-label="Ampliar foto do depois">
+                <span class="media media--thumb" data-tone="creme">
+                  <img data-img="depois" alt="Poltrona depois da reforma, com tecido bouclé creme novo">
+                </span>
+                <span class="ba-thumb__cap">Depois</span>
+              </button>
+            </div>
+            <button class="ba-card__btn" id="ba-open" type="button" aria-haspopup="dialog">Ampliar comparação</button>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SOBRE ===== -->
+    <section class="about" id="sobre">
+      <div class="container about__inner reveal">
+        <span class="tag tag--plain">SOBRE O ATELIÊ —</span>
+        <h2>Tradição artesanal, acabamento de ateliê.</h2>
+        <p>Cada peça passa pelas mãos de profissionais experientes: estrutura revisada, espumas de densidade correta e costuras precisas. O resultado é um estofado confortável, bonito e feito para durar.</p>
+        <ul class="about__stats">
+          <li><strong>+15</strong><span>anos de experiência</span></li>
+          <li><strong>+2.000</strong><span>peças entregues</span></li>
+          <li><strong>100%</strong><span>feito sob medida</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== SERVIÇOS ===== -->
+    <section class="services" id="servicos">
+      <div class="container services__grid">
+        <div class="services__text reveal">
+          <span class="tag tag--plain">NOSSOS SERVIÇOS —</span>
+          <h2>Soluções sob medida para o seu conforto.</h2>
+          <p>Do desenho do móvel à troca completa do revestimento, oferecemos o serviço certo para cada necessidade, sempre com materiais de qualidade e prazo combinado.</p>
+          <a class="link-arrow" href="#servicos-lista">Conheça nossos serviços <span aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="services__cards" id="servicos-lista">
+          <article class="card card--action reveal" data-quote-open="make">
+            <div class="media media--card" data-tone="madeira">
+              <img data-img="servico1" alt="Fabricação de estofado sob medida" loading="lazy">
+            </div>
+            <div class="card__body">
+              <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="#183324" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17 17 3l4 4L7 21z"/><path d="m7 13 2 2M10 10l2 2M13 7l2 2"/></svg>
+              <h3>Fabricação Sob Medida</h3>
+              <p>Sofás, poltronas e cabeceiras desenhados para o seu espaço, no tamanho, formato e tecido que você escolher.</p>
+              <button class="card__cta" type="button" aria-haspopup="dialog">Montar orçamento sob medida <span aria-hidden="true">→</span></button>
+            </div>
+          </article>
+
+          <article class="card card--action reveal" data-quote-open="fix" data-quote-kind="Restauração">
+            <div class="media media--card" data-tone="verde">
+              <img data-img="servico2" alt="Sofá bege de três lugares restaurado, com almofadas terracota" loading="lazy">
+            </div>
+            <div class="card__body">
+              <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="#183324" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="m19 16 .8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg>
+              <h3>Restauração de Estofados</h3>
+              <p>Devolvemos a beleza de peças antigas ou afetivas, recuperando estrutura, espuma e acabamento com respeito ao original.</p>
+              <button class="card__cta" type="button" aria-haspopup="dialog">Orçar restauração <span aria-hidden="true">→</span></button>
+            </div>
+          </article>
+
+          <article class="card card--action reveal" data-quote-open="fix" data-quote-kind="Reforma">
+            <div class="media media--card" data-tone="terracota">
+              <img data-img="servico3" alt="Reforma de estofados" loading="lazy">
+            </div>
+            <div class="card__body">
+              <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="#183324" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.5 4M20 20v-4h-4"/></svg>
+              <h3>Reforma de Estofados</h3>
+              <p>Troca de tecido, espuma e forração para renovar o visual e o conforto do seu móvel com um ótimo custo-benefício.</p>
+              <button class="card__cta" type="button" aria-haspopup="dialog">Orçar reforma <span aria-hidden="true">→</span></button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TECIDOS PREMIUM ===== -->
+    <section class="fabrics" id="tecidos">
+      <div class="container fabrics__grid">
+        <div class="fabrics__photo reveal">
+          <div class="media media--fabrics" data-tone="verde">
+            <img data-img="sofaVerde" alt="Sofá de veludo verde-esmeralda com almofadas terracota" loading="lazy">
+          </div>
+        </div>
+
+        <div class="fabrics__text reveal">
+          <span class="tag tag--plain">TECIDOS PREMIUM —</span>
+          <h2>Qualidade em cada detalhe.</h2>
+          <p>Trabalhamos com linhos, veludos e couros selecionados, resistentes e agradáveis ao toque. Visite o ateliê, toque as amostras e escolha com segurança.</p>
+          <button class="btn btn--outline" type="button" data-open-fabrics>Ver opções de tecidos <span aria-hidden="true">→</span></button>
+        </div>
+
+        <div class="swatches reveal" role="list" aria-label="Amostras de tecido">
+          <button class="swatch" type="button" role="listitem" data-fabric="linho" aria-haspopup="dialog" aria-label="Linho: ver detalhes">
+            <span class="media media--swatch" data-tone="linho"><img data-img="linho" alt="" loading="lazy"></span>
+            <span class="swatch__label">Linho</span>
+          </button>
+          <button class="swatch" type="button" role="listitem" data-fabric="veludo" aria-haspopup="dialog" aria-label="Veludo: ver detalhes">
+            <span class="media media--swatch" data-tone="veludo"><img data-img="veludo" alt="" loading="lazy"></span>
+            <span class="swatch__label">Veludo</span>
+          </button>
+          <button class="swatch" type="button" role="listitem" data-fabric="couro" aria-haspopup="dialog" aria-label="Couro: ver detalhes">
+            <span class="media media--swatch" data-tone="couro"><img data-img="couro" alt="" loading="lazy"></span>
+            <span class="swatch__label">Couro</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GALERIA (reaproveita as fotos da pasta img/) ===== -->
+    <section class="gallery" id="galeria">
+      <div class="container">
+        <div class="gallery__head reveal">
+          <span class="tag tag--plain">GALERIA —</span>
+          <h2>Peças que ganharam nova vida.</h2>
+        </div>
+        <div class="gallery__grid">
+          <div class="media media--gallery reveal" data-tone="terracota"><img data-img="gal1" alt="Poltrona reformada" loading="lazy"></div>
+          <div class="media media--gallery reveal" data-tone="verde"><img data-img="gal2" alt="Sofá restaurado" loading="lazy"></div>
+          <div class="media media--gallery reveal" data-tone="verde"><img data-img="gal3" alt="Sofá de veludo verde" loading="lazy"></div>
+          <div class="media media--gallery reveal" data-tone="creme"><img data-img="gal4" alt="Poltrona bouclé creme" loading="lazy"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BANNER CTA / CONTATO ===== -->
+    <section class="cta" id="contato">
+      <svg class="cta__watermark" aria-hidden="true"><use href="#armchair-line"/></svg>
+      <div class="container cta__grid">
+        <div class="cta__text reveal">
+          <h2>Transforme seu ambiente com o toque do Atelié.</h2>
+          <p>Conte o que você precisa e receba um orçamento personalizado, sem compromisso. Atendemos pelo WhatsApp e também com visita ao ateliê.</p>
+          <a class="btn btn--terracota" href="#" data-whatsapp data-message="Olá! Quero transformar meu ambiente com o Ateliê do Estofado. Podem me atender?">Falar no WhatsApp <span aria-hidden="true">→</span></a>
+
+          <ul class="contact-list" aria-label="Contato e endereço">
+            <li>
+              <svg aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              <a href="#" data-whatsapp data-message="Olá! Vim pelo site do Ateliê do Estofado e gostaria de falar com vocês.">WhatsApp: +55 81 9613-6379</a>
+            </li>
+            <li>
+              <svg aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              <a href="#" data-whatsapp data-phone="5581996901572" data-message="Olá! Vim pelo site do Ateliê do Estofado e gostaria de falar com vocês.">WhatsApp: +55 81 99690-1572</a>
+            </li>
+            <li>
+              <svg aria-hidden="true"><use href="#i-instagram"/></svg>
+              <a href="https://www.instagram.com/atelie_do_estofados/" target="_blank" rel="noopener noreferrer">Instagram: @atelie_do_estofados</a>
+            </li>
+            <li>
+              <svg aria-hidden="true"><use href="#i-pin"/></svg>
+              <a href="https://maps.google.com/maps?sca_esv=0558cf9fded743df&amp;udm&amp;fvr=1&amp;pvq=Cg0vZy8xMXprZzAwMWNrIhgKEmF0ZWxpZSBkbyBlc3RvZmFkbxACGAOJAfq0bwLWk17j&amp;lqi=ChJhdGVsaWUgZG8gZXN0b2ZhZG9I8YqA4MW-gIAIWh4QABABEAIYARgCIhJhdGVsaWUgZG8gZXN0b2ZhZG-SARZmdXJuaXR1cmVfbWFudWZhY3R1cmVy&amp;vet=10CAAQoqAOahcKEwj4raSAxoiYAxUAAAAAHQAAAAAQCA..i&amp;cs=0&amp;um=1&amp;ie=UTF-8&amp;fb=1&amp;gl=br&amp;sa=X&amp;ftid=0x7aae78588861b73:0xe35e93d6026fb4fa" target="_blank" rel="noopener noreferrer" aria-label="Abrir endereço no Google Maps">Estr. de Curcurana, 54 – Jardim Prazeres<br>Jaboatão dos Guararapes – PE, 54490-121</a>
+            </li>
+          </ul>
+        </div>
+        <div class="cta__photo reveal">
+          <div class="media media--cta" data-tone="creme">
+            <img data-img="bannerFinal" alt="Sofá creme com almofadas terracota" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <a class="brand brand--footer" href="#inicio" aria-label="Ateliê do Estofado - início">
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-logo alt="Ateliê do Estofado" class="footer-logo" width="183" height="40" loading="lazy">
+      </a>
+
+      <nav aria-label="Rodapé">
+        <ul class="footer__nav">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#tecidos">Tecidos</a></li>
+          <li><a href="#galeria">Galeria</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__social">
+        <a href="https://www.instagram.com/atelie_do_estofados/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @atelie_do_estofados"><svg aria-hidden="true"><use href="#i-instagram"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a>
+        <a href="#" data-whatsapp aria-label="WhatsApp"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
+      </div>
+    </div>
+    <address class="container footer__contact">
+      <a href="#" data-whatsapp data-phone="5581996901572" data-message="Olá! Vim pelo site do Ateliê do Estofado." aria-label="Falar no WhatsApp +55 81 99690-1572"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg>+55 81 99690-1572</a>
+      <a href="#" data-whatsapp data-message="Olá! Vim pelo site do Ateliê do Estofado." aria-label="Falar no WhatsApp +55 81 9613-6379"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg>+55 81 9613-6379</a>
+      <a href="https://maps.google.com/maps?sca_esv=0558cf9fded743df&amp;udm&amp;fvr=1&amp;pvq=Cg0vZy8xMXprZzAwMWNrIhgKEmF0ZWxpZSBkbyBlc3RvZmFkbxACGAOJAfq0bwLWk17j&amp;lqi=ChJhdGVsaWUgZG8gZXN0b2ZhZG9I8YqA4MW-gIAIWh4QABABEAIYARgCIhJhdGVsaWUgZG8gZXN0b2ZhZG-SARZmdXJuaXR1cmVfbWFudWZhY3R1cmVy&amp;vet=10CAAQoqAOahcKEwj4raSAxoiYAxUAAAAAHQAAAAAQCA..i&amp;cs=0&amp;um=1&amp;ie=UTF-8&amp;fb=1&amp;gl=br&amp;sa=X&amp;ftid=0x7aae78588861b73:0xe35e93d6026fb4fa" target="_blank" rel="noopener noreferrer" aria-label="Abrir endereço no Google Maps"><svg aria-hidden="true"><use href="#i-pin"/></svg>Estr. de Curcurana, 54 - Jardim Prazeres, Jaboatão dos Guararapes - PE, 54490-121</a>
+    </address>
+    <div class="container footer__bottom">
+      <p class="footer__slogan">Conforto que dura.</p>
+      <p class="footer__copy">© <span id="ano">2026</span> Ateliê do Estofado. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <a class="whats-float" href="#" data-whatsapp aria-label="Falar no WhatsApp">
+    <svg aria-hidden="true"><use href="#i-whatsapp"/></svg>
+  </a>
+
+  <!-- ===== MODAL COMPARATIVO ANTES E DEPOIS ===== -->
+  <dialog class="modal modal--wide" id="ba-modal" aria-labelledby="ba-title">
+    <div class="modal__inner">
+      <button class="modal__close" type="button" data-close-modal aria-label="Fechar">&times;</button>
+      <span class="tag tag--plain">TRANSFORMAÇÃO —</span>
+      <h3 id="ba-title">Antes e Depois</h3>
+
+      <div class="ba-big">
+        <figure class="ba-big__item" data-view="antes">
+          <div class="media media--big" data-tone="madeira">
+            <img data-img="antes" alt="Poltrona antes da reforma">
+          </div>
+          <figcaption>Antes</figcaption>
+        </figure>
+        <figure class="ba-big__item" data-view="depois">
+          <div class="media media--big" data-tone="creme">
+            <img data-img="depois" alt="Poltrona depois da reforma">
+          </div>
+          <figcaption>Depois</figcaption>
+        </figure>
+      </div>
+
+      <a class="btn btn--terracota" href="#" data-whatsapp data-message="Olá! Vi a transformação do antes e depois no site e quero um orçamento para o meu estofado.">Quero uma transformação assim <span aria-hidden="true">→</span></a>
+    </div>
+  </dialog>
+
+  <!-- ===== MODAL DE TECIDOS ===== -->
+  <dialog class="modal" id="fabric-modal" aria-labelledby="fabric-title">
+    <div class="modal__inner">
+      <button class="modal__close" type="button" data-close-modal aria-label="Fechar">&times;</button>
+
+      <div class="modal__tabs" role="group" aria-label="Escolha o tecido">
+        <button type="button" class="chip" data-tab="linho" aria-pressed="true">Linho</button>
+        <button type="button" class="chip" data-tab="veludo" aria-pressed="false">Veludo</button>
+        <button type="button" class="chip" data-tab="couro" aria-pressed="false">Couro</button>
+      </div>
+
+      <div class="modal__content">
+        <div class="media modal__preview" id="fabric-preview" data-tone="linho"><img id="fabric-img" alt=""></div>
+        <div class="modal__info">
+          <span class="tag tag--plain">TECIDO PREMIUM —</span>
+          <h3 id="fabric-title">Linho</h3>
+          <p id="fabric-desc"></p>
+          <dl class="modal__facts">
+            <div><dt>Composição</dt><dd id="fabric-composicao"></dd></div>
+            <div><dt>Toque</dt><dd id="fabric-toque"></dd></div>
+            <div><dt>Indicado para</dt><dd id="fabric-uso"></dd></div>
+            <div><dt>Cuidados</dt><dd id="fabric-cuidado"></dd></div>
+          </dl>
+          <a class="btn btn--terracota" id="fabric-cta" href="#" data-whatsapp>Agendar visita com mostruário <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ===== ORÇAMENTO: ESCOLHA RÁPIDA ===== -->
+  <dialog class="modal modal--choice" id="quote-choice" aria-labelledby="quote-choice-title">
+    <div class="modal__inner">
+      <button class="modal__close" type="button" data-close-modal aria-label="Fechar">&times;</button>
+      <span class="tag tag--plain">ORÇAMENTO —</span>
+      <h3 id="quote-choice-title">O que você precisa?</h3>
+      <p class="quote__intro">Escolha uma opção e monte seu orçamento em poucos cliques. Ele segue pronto para o nosso WhatsApp.</p>
+
+      <div class="choice-grid">
+        <button class="choice" type="button" data-quote-open="make">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17 17 3l4 4L7 21z"/><path d="m7 13 2 2M10 10l2 2M13 7l2 2"/></svg>
+          <strong>Fabricar Sob Medida</strong>
+          <span>Um estofado novo, no tamanho, modelo e tecido que você escolher.</span>
+        </button>
+        <button class="choice" type="button" data-quote-open="fix" data-quote-kind="Reforma">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.5 4M20 20v-4h-4"/></svg>
+          <strong>Reformar / Restaurar</strong>
+          <span>Renove o móvel que você já tem: tecido, espuma, estrutura e acabamento.</span>
+        </button>
+      </div>
+
+      <a class="link-arrow" href="#" data-whatsapp data-message="Olá! Vim pelo site do Ateliê do Estofado e gostaria de falar com vocês.">Prefiro falar direto no WhatsApp <span aria-hidden="true">→</span></a>
+    </div>
+  </dialog>
+
+  <!-- ===== ORÇAMENTO 1: FABRICAÇÃO SOB MEDIDA ===== -->
+  <dialog class="modal modal--quote" id="quote-make" aria-labelledby="quote-make-title">
+    <div class="modal__inner">
+      <button class="modal__close" type="button" data-close-modal aria-label="Fechar">&times;</button>
+      <span class="tag tag--plain">ORÇAMENTO —</span>
+      <h3 id="quote-make-title">Fabricação Sob Medida</h3>
+      <p class="quote__intro">Conte como você imagina o seu estofado. Os campos com <abbr title="obrigatório">*</abbr> são obrigatórios.</p>
+
+      <form class="quote-form" id="form-make" novalidate>
+        <div class="qgrid">
+          <div class="field span-2" data-field="model">
+            <label for="mk-model">Tipo e modelo do estofado <abbr title="obrigatório">*</abbr></label>
+            <select id="mk-model" name="model" data-fill="models" required></select>
+          </div>
+
+          <div class="field span-2" data-field="tamanho">
+            <label for="mk-size">Tamanho de referência <abbr title="obrigatório">*</abbr></label>
+            <select id="mk-size" name="tamanho" data-fill="sizes" required></select>
+          </div>
+
+          <fieldset class="field span-2 dims" data-field="dims">
+            <legend>Medidas exatas <span class="opt">(opcional)</span></legend>
+            <div class="dims__row">
+              <label>Largura (m)<input type="number" name="largura" inputmode="decimal" step="0.01" min="0.2" max="9.99" placeholder="2,20"></label>
+              <label>Profundidade (m)<input type="number" name="profundidade" inputmode="decimal" step="0.01" min="0.2" max="9.99" placeholder="0,95"></label>
+              <label>Altura (m)<input type="number" name="altura" inputmode="decimal" step="0.01" min="0.2" max="9.99" placeholder="0,85"></label>
+            </div>
+          </fieldset>
+
+          <div class="field span-2" data-field="fabric">
+            <label for="mk-fabric">Tipo de tecido / revestimento <abbr title="obrigatório">*</abbr></label>
+            <select id="mk-fabric" name="fabric" data-fill="fabrics" required></select>
+            <p class="field__hint" data-fabric-hint aria-live="polite"></p>
+          </div>
+
+          <div class="field span-2" data-field="color">
+            <span class="field__label" id="mk-color-label">Cor <abbr title="obrigatório">*</abbr></span>
+            <div class="dots" role="group" aria-labelledby="mk-color-label" data-color-picker></div>
+            <input type="text" id="mk-color" name="color" maxlength="60" autocomplete="off" placeholder="Toque numa cor ou digite outra (ex.: verde-sálvia)" aria-label="Cor escolhida">
+          </div>
+
+          <div class="field span-2" data-field="notes">
+            <label for="mk-notes">Observações do modelo <span class="opt">(opcional)</span></label>
+            <textarea id="mk-notes" name="notes" rows="3" maxlength="500" placeholder="Ex.: braço fino de 15cm, pés de madeira castanho, assento com mola ensacada"></textarea>
+          </div>
+
+          <div class="field span-2 upload" data-field="photo" data-upload>
+            <span class="field__label">Foto de referência <span class="opt">(opcional)</span></span>
+            <label class="upload__drop">
+              <input type="file" accept="image/*" name="photo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+              <span><strong>Anexar foto de um modelo que você gostou</strong><small>JPG, PNG ou WEBP, até 15 MB</small></span>
+            </label>
+            <div class="upload__preview" hidden>
+              <img alt="Miniatura da foto anexada">
+              <span class="upload__name"></span>
+              <button class="upload__remove" type="button">Remover</button>
+            </div>
+            <p class="upload__msg" role="alert" hidden></p>
+          </div>
+        </div>
+
+        <div class="quote__notice" role="status" hidden></div>
+
+        <div class="quote__actions">
+          <button class="btn btn--outline btn--sm" type="button" data-close-modal>Cancelar</button>
+          <button class="btn btn--terracota" type="submit"><svg class="btn__icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Enviar Orçamento no WhatsApp</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- ===== ORÇAMENTO 2: REFORMA / RESTAURAÇÃO ===== -->
+  <dialog class="modal modal--quote" id="quote-fix" aria-labelledby="quote-fix-title">
+    <div class="modal__inner">
+      <button class="modal__close" type="button" data-close-modal aria-label="Fechar">&times;</button>
+      <span class="tag tag--plain">ORÇAMENTO —</span>
+      <h3 id="quote-fix-title">Reforma e Restauração</h3>
+      <p class="quote__intro">Mostre o seu móvel e marque o que ele precisa. Os campos com <abbr title="obrigatório">*</abbr> são obrigatórios.</p>
+
+      <form class="quote-form" id="form-fix" novalidate>
+        <div class="qgrid">
+          <div class="field span-2 upload upload--featured" data-field="photo" data-upload>
+            <span class="field__label">Foto do móvel atual <span class="opt">(recomendado)</span></span>
+            <label class="upload__drop">
+              <input type="file" accept="image/*" name="photo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+              <span><strong>Toque aqui ou arraste a foto do sofá / poltrona atual</strong><small>Com a foto, o orçamento fica mais rápido e preciso · até 15 MB</small></span>
+            </label>
+            <div class="upload__preview" hidden>
+              <img alt="Miniatura da foto do móvel atual">
+              <span class="upload__name"></span>
+              <button class="upload__remove" type="button">Remover</button>
+            </div>
+            <p class="upload__msg" role="alert" hidden></p>
+          </div>
+
+          <div class="field span-2" data-field="kind">
+            <span class="field__label" id="fx-kind-label">Tipo de serviço</span>
+            <div class="modal__tabs kind-tabs" role="group" aria-labelledby="fx-kind-label">
+              <button type="button" class="chip" data-kind="Reforma" aria-pressed="true">Reforma</button>
+              <button type="button" class="chip" data-kind="Restauração" aria-pressed="false">Restauração</button>
+            </div>
+          </div>
+
+          <div class="field span-2" data-field="movel">
+            <label for="fx-item">Qual móvel será reformado? <abbr title="obrigatório">*</abbr></label>
+            <select id="fx-item" name="movel" data-fill="items" required></select>
+          </div>
+
+          <fieldset class="field span-2" data-field="services">
+            <legend>Serviços necessários <abbr title="obrigatório">*</abbr> <span class="opt">(marque quantos precisar)</span></legend>
+            <div class="checks">
+              <label class="check"><input type="checkbox" name="svc" value="Troca completa do tecido"><span>Troca completa do tecido</span></label>
+              <label class="check"><input type="checkbox" name="svc" value="Troca de espuma (assento/encosto afundado)"><span>Troca de espuma <small>assento/encosto afundado</small></span></label>
+              <label class="check"><input type="checkbox" name="svc" value="Reforço na madeira / estrutura interna"><span>Reforço na madeira / estrutura interna</span></label>
+              <label class="check"><input type="checkbox" name="svc" value="Troca de percintas elásticas ou molas"><span>Troca de percintas elásticas ou molas</span></label>
+              <label class="check"><input type="checkbox" name="svc" value="Modernização do design (mudar braços ou pés)"><span>Modernização do design <small>mudar braços ou pés</small></span></label>
+              <label class="check"><input type="checkbox" name="svc" value="Impermeabilização pós-reforma"><span>Impermeabilização pós-reforma</span></label>
+            </div>
+          </fieldset>
+
+          <div class="field span-2" data-field="fabric">
+            <label for="fx-fabric">Novo tecido desejado <abbr class="req-fabric" title="obrigatório se for trocar o tecido" hidden>*</abbr></label>
+            <select id="fx-fabric" name="fabric" data-fill="fabrics"></select>
+            <p class="field__hint" data-fabric-hint aria-live="polite"></p>
+          </div>
+
+          <div class="field span-2" data-field="color">
+            <span class="field__label" id="fx-color-label">Nova cor desejada <abbr class="req-fabric" title="obrigatório se for trocar o tecido" hidden>*</abbr></span>
+            <div class="dots" role="group" aria-labelledby="fx-color-label" data-color-picker></div>
+            <input type="text" id="fx-color" name="color" maxlength="60" autocomplete="off" placeholder="Toque numa cor ou digite outra (ex.: verde-sálvia)" aria-label="Nova cor desejada">
+          </div>
+
+          <div class="field span-2" data-field="measures">
+            <label for="fx-measures">Medidas aproximadas ou quantidade <abbr class="req-qty" title="obrigatório para cadeiras" hidden>*</abbr></label>
+            <input type="text" id="fx-measures" name="measures" maxlength="100" autocomplete="off" placeholder='Ex.: "2,20m de largura" ou "6 cadeiras"'>
+          </div>
+
+          <div class="field span-2" data-field="notes">
+            <label for="fx-notes">Observações <span class="opt">(opcional)</span></label>
+            <textarea id="fx-notes" name="notes" rows="3" maxlength="500" placeholder="Ex.: o assento está afundado e o braço esquerdo balança"></textarea>
+          </div>
+        </div>
+
+        <div class="quote__notice" role="status" hidden></div>
+
+        <div class="quote__actions">
+          <button class="btn btn--outline btn--sm" type="button" data-close-modal>Cancelar</button>
+          <button class="btn btn--terracota" type="submit"><svg class="btn__icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Enviar Orçamento no WhatsApp</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
