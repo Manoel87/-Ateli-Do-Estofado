@@ -489,3 +489,6 @@ p { color: rgba(24, 51, 36, .82); }
   .quote__actions .btn--outline { display: none; }
   .dots { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
+
+.notice__actions { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin-top: .6rem; }
+.quote__notice button { padding: 0; background: none; border: 0; border-bottom: 1px solid currentColor; font-size: .85rem; font-weight: 600; color: var(--terracota-escuro); }

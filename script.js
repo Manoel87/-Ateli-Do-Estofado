@@ -231,9 +231,17 @@
   /* =======================================================
      7) ORÇAMENTO PERSONALIZADO (Sob Medida e Reforma / Restauração)
      ======================================================= */
-  const QUOTE_WHATSAPP = "5581997967332";
+  const QUOTE_WHATSAPP = WHATSAPP_NUMBER; // mesmo número principal do site (troque aqui se quiser outro)
   const PHOTO_MAX_MB = 15;
-  const PHOTO_LINE = "📸 *Tenho a foto do estofado — estou enviando aqui na conversa agora!*";
+
+  /* ---- ENVIO REAL DA FOTO (link na mensagem) ----
+     O WhatsApp não aceita anexo por link. Para a foto chegar ao dono, ela é enviada
+     a um serviço de imagens (ImgBB, gratuito) e o LINK vai dentro da mensagem.
+     1) Crie a conta em https://imgbb.com  2) Pegue a chave em https://api.imgbb.com
+     3) Cole a chave abaixo. Enquanto estiver vazio, vale o modo antigo (colar a foto). */
+  const IMGBB_API_KEY = "36f49ab5f4e1ca8811a26a37da6d76ff";
+  const PHOTO_EXPIRATION_SECONDS = 60 * 60 * 24 * 60; // a foto some do link após 60 dias (0 = nunca)
+  const PHOTO_LINE = "*Tenho a foto do estofado — estou enviando aqui na conversa agora!*";
 
   /* ---------- Catálogo de opções (fonte única para os dois modais) ---------- */
   const MODELOS = [
@@ -416,29 +424,156 @@
     ["dragleave", "drop"].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.remove("is-drag"); }));
     drop.addEventListener("drop", (e) => handle(e.dataTransfer?.files?.[0]));
 
-    return { hasPhoto: () => Boolean(state.file) };
+    return { hasPhoto: () => Boolean(state.file), getFile: () => state.file };
   };
 
   /* ---------- Envio ---------- */
   const buildQuoteLink = (message) => `https://wa.me/${QUOTE_WHATSAPP}?text=${encodeURIComponent(message)}`;
 
-  const finishSend = (form, message, hasPhoto) => {
-    const link = buildQuoteLink(message);
+  /* A foto não vai por link (wa.me só aceita texto). Caminhos possíveis:
+     1) celular: menu de compartilhar do aparelho, que envia foto + texto juntos;
+     2) computador: a foto é copiada e o cliente só cola (Ctrl+V) na conversa. */
+  const toPngBlob = (file) => new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => {
+      const c = document.createElement("canvas");
+      c.width = img.naturalWidth; c.height = img.naturalHeight;
+      c.getContext("2d").drawImage(img, 0, 0);
+      c.toBlob((b) => { URL.revokeObjectURL(url); b ? resolve(b) : reject(new Error("png")); }, "image/png");
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error("img")); };
+    img.src = url;
+  });
+
+  const copyPhoto = async (file) => {
+    try {
+      if (!navigator.clipboard?.write || typeof ClipboardItem === "undefined") return false;
+      const blob = file.type === "image/png" ? file : await toPngBlob(file);
+      await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+      return true;
+    } catch { return false; }
+  };
+
+  const sharePhoto = async (file, message) => {
+    const data = { files: [file], text: message };
+    if (!(navigator.share && navigator.canShare && navigator.canShare(data))) return "unsupported";
+    try { await navigator.share(data); return "shared"; }
+    catch (err) { return err && err.name === "AbortError" ? "aborted" : "failed"; }
+  };
+
+  const renderNotice = (form, text, actions = []) => {
     const notice = form.querySelector(".quote__notice");
     notice.replaceChildren();
     const p = document.createElement("p");
-    p.textContent = hasPhoto
-      ? "Abrimos o WhatsApp com o seu orçamento. Falta só um passo: anexe a foto do estofado na conversa (ícone de clipe ou “+”) e envie. 📸"
-      : "Abrimos o WhatsApp com o seu orçamento. É só tocar em enviar. ✅";
-    const a = document.createElement("a");
-    a.href = link;
-    a.target = "_blank";
-    a.rel = "noopener noreferrer";
-    a.textContent = "A janela não abriu? Abrir o WhatsApp novamente";
-    notice.append(p, a);
+    p.textContent = text;
+    notice.append(p);
+    if (actions.length) {
+      const row = document.createElement("div");
+      row.className = "notice__actions";
+      actions.forEach((a) => {
+        const el = document.createElement(a.href ? "a" : "button");
+        el.textContent = a.label;
+        if (a.href) { el.href = a.href; el.target = "_blank"; el.rel = "noopener noreferrer"; }
+        else { el.type = "button"; el.addEventListener("click", a.onClick); }
+        row.append(el);
+      });
+      notice.append(row);
+    }
     notice.hidden = false;
     notice.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  };
+
+  /* Reduz a foto (lado maior 1600px, JPEG) para subir rápido, inclusive no 4G */
+  const shrinkPhoto = (file, max = 1600) => new Promise((resolve) => {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => {
+      const k = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+      const c = document.createElement("canvas");
+      c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k);
+      c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+      c.toBlob((b) => { URL.revokeObjectURL(url); resolve(b || file); }, "image/jpeg", 0.86);
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); resolve(file); };
+    img.src = url;
+  });
+
+  const uploadPhoto = async (file) => {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 45000);
+    try {
+      const body = new FormData();
+      body.append("image", await shrinkPhoto(file), "foto-estofado.jpg");
+      const qs = `key=${encodeURIComponent(IMGBB_API_KEY)}` + (PHOTO_EXPIRATION_SECONDS ? `&expiration=${PHOTO_EXPIRATION_SECONDS}` : "");
+      const res = await fetch(`https://api.imgbb.com/1/upload?${qs}`, { method: "POST", body, signal: ctrl.signal });
+      const json = await res.json();
+      return json?.success ? (json.data.url_viewer || json.data.url) : null;
+    } catch { return null; }
+    finally { clearTimeout(timer); }
+  };
+
+  const finishSend = async (form, message, file) => {
+    // Com a chave configurada: sobe a foto e manda o LINK dela no WhatsApp
+    if (file && IMGBB_API_KEY) {
+      const btn = form.querySelector('button[type="submit"]');
+      const label = btn.innerHTML;
+      btn.disabled = true;
+      btn.textContent = "Enviando a foto…";
+      const win = window.open("", "_blank"); // abre já (dentro do clique) para o navegador não bloquear
+      const url = await uploadPhoto(file);
+      btn.disabled = false;
+      btn.innerHTML = label;
+      if (url) {
+        const finalLink = buildQuoteLink(message.replace(PHOTO_LINE, `*Foto do estofado:* ${url}`));
+        if (win) win.location.href = finalLink;
+        renderNotice(form, "Pronto! A foto foi enviada junto: o link dela vai dentro da mensagem do WhatsApp. É só tocar em enviar. ✅", [{ label: "A janela não abriu? Abrir o WhatsApp", href: finalLink }]);
+        return;
+      }
+      win?.close();
+      renderNotice(form, "Não conseguimos enviar a foto agora (verifique a internet). Vamos seguir pelo modo manual:");
+    }
+    const link = buildQuoteLink(message);
+    const openLink = { label: "Abrir o WhatsApp (só o texto)", href: link };
+
+    if (!file) {
+      renderNotice(form, "Abrimos o WhatsApp com o seu orçamento. É só tocar em enviar. ✅", [{ label: "A janela não abriu? Abrir novamente", href: link }]);
+      window.open(link, "_blank", "noopener");
+      return;
+    }
+
+    const doShare = async () => {
+      const r = await sharePhoto(file, message);
+      if (r === "shared") {
+        renderNotice(form, "No menu que abriu, escolha o WhatsApp e depois o contato do Ateliê do Estofado. A foto e o orçamento seguem juntos. 📸");
+        return true;
+      }
+      return r;
+    };
+
+    // Celular: compartilhamento nativo (foto + texto na mesma mensagem)
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      const r = await doShare();
+      if (r === true) return;
+      renderNotice(
+        form,
+        r === "aborted" ? "O envio foi cancelado. Toque abaixo para tentar de novo." : "Não foi possível enviar a foto junto. Tente de novo ou abra o WhatsApp só com o texto e anexe a foto na conversa (ícone de clipe ou “+”).",
+        [{ label: "Enviar foto + orçamento", onClick: async () => { const x = await doShare(); if (x !== true) renderNotice(form, "Seu navegador não permitiu. Abra o WhatsApp e anexe a foto na conversa.", [openLink]); } }, openLink]
+      );
+      return;
+    }
+
+    // Computador: copia a foto e abre o WhatsApp; o cliente cola na conversa
+    const copied = await copyPhoto(file);
     window.open(link, "_blank", "noopener");
+    renderNotice(
+      form,
+      copied
+        ? "Foto copiada! Na conversa do WhatsApp que abriu, clique na caixa de mensagem e cole com Ctrl+V (ou ⌘+V no Mac). Depois é só enviar. 📸"
+        : "Abrimos o WhatsApp com o orçamento. Não conseguimos copiar a foto automaticamente: anexe-a na conversa (ícone de clipe) e envie. 📸",
+      copied ? [{ label: "Copiar a foto novamente", onClick: async () => { const ok = await copyPhoto(file); renderNotice(form, ok ? "Foto copiada de novo. Cole na conversa com Ctrl+V." : "Não foi possível copiar. Anexe a foto pelo clipe do WhatsApp.", [openLink]); } }, { label: "A janela não abriu? Abrir o WhatsApp", href: link }]
+             : [{ label: "A janela não abriu? Abrir o WhatsApp", href: link }]
+    );
   };
 
   const focusFirstError = (form, names) => {
@@ -492,18 +627,18 @@
       const lines = [
         "*ORÇAMENTO — ATELIÊ DO ESTOFADO*",
         "",
-        "🛠️ *Tipo de serviço:* Fabricação sob medida",
-        `🛋️ *Modelo:* ${form.elements.model.value}`,
-        `📐 *Tamanho:* ${form.elements.tamanho.value}`,
+        "• *Tipo de serviço:* Fabricação sob medida",
+        `• *Modelo:* ${form.elements.model.value}`,
+        `• *Tamanho:* ${form.elements.tamanho.value}`,
       ];
       const dimLines = [["Largura", d.largura], ["Profundidade", d.profundidade], ["Altura", d.altura]].filter(([, v]) => v !== null);
-      if (dimLines.length) lines.push(...dimLines.map(([n, v]) => `     • ${n}: ${fmtMeters(v)}`));
-      lines.push(`🧵 *Tecido:* ${form.elements.fabric.value}`, `🎨 *Cor:* ${clean(color.input.value)}`);
+      if (dimLines.length) lines.push(...dimLines.map(([n, v]) => `     - ${n}: ${fmtMeters(v)}`));
+      lines.push(`• *Tecido:* ${form.elements.fabric.value}`, `• *Cor:* ${clean(color.input.value)}`);
       const notes = clean(form.elements.notes.value);
-      if (notes) lines.push(`📝 *Observações:* ${notes}`);
+      if (notes) lines.push(`• *Observações:* ${notes}`);
       if (upload.hasPhoto()) lines.push("", PHOTO_LINE);
 
-      finishSend(form, lines.join("\n"), upload.hasPhoto());
+      finishSend(form, lines.join("\n"), upload.getFile());
     });
   };
 
@@ -553,19 +688,19 @@
       const lines = [
         "*ORÇAMENTO — ATELIÊ DO ESTOFADO*",
         "",
-        `🛠️ *Tipo de serviço:* ${kind} de estofado`,
-        `🛋️ *Móvel:* ${form.elements.movel.value}`,
-        "🔧 *Serviços necessários:*",
-        ...services.map((s) => `     • ${s}`),
+        `• *Tipo de serviço:* ${kind} de estofado`,
+        `• *Móvel:* ${form.elements.movel.value}`,
+        "• *Serviços necessários:*",
+        ...services.map((s) => `     - ${s}`),
       ];
-      if (fabricSel.value) lines.push(`🧵 *Novo tecido:* ${fabricSel.value}`);
-      if (clean(color.input.value)) lines.push(`🎨 *Nova cor:* ${clean(color.input.value)}`);
-      if (measures) lines.push(`📐 *Medidas / Quantidade:* ${measures}`);
+      if (fabricSel.value) lines.push(`• *Novo tecido:* ${fabricSel.value}`);
+      if (clean(color.input.value)) lines.push(`• *Nova cor:* ${clean(color.input.value)}`);
+      if (measures) lines.push(`• *Medidas / Quantidade:* ${measures}`);
       const notes = clean(form.elements.notes.value);
-      if (notes) lines.push(`📝 *Observações:* ${notes}`);
+      if (notes) lines.push(`• *Observações:* ${notes}`);
       if (upload.hasPhoto()) lines.push("", PHOTO_LINE);
 
-      finishSend(form, lines.join("\n"), upload.hasPhoto());
+      finishSend(form, lines.join("\n"), upload.getFile());
     });
   };
 
